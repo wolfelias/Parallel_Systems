@@ -1,0 +1,4 @@
+"/Users/elias/Applications/CLion Nova.app/Contents/bin/cmake/mac/x64/bin/cmake" -DCMAKE_BUILD_TYPE=Debug "-DCMAKE_MAKE_PROGRAM=/Users/elias/Applications/CLion Nova.app/Contents/bin/ninja/mac/x64/ninja" -DCMAKE_C_COMPILER=/usr/local/Cellar/gcc/13.2.0/bin/gcc-13 -DCMAKE_CXX_COMPILER=/usr/local/Cellar/gcc/13.2.0/bin/g++-13 -G Ninja -S /Users/elias/CLionProjects/UE02 -B /Users/elias/CLionProjects/UE02/cmake-build-debug
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /Users/elias/CLionProjects/UE02/cmake-build-debug
