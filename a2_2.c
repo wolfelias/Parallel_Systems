@@ -1,9 +1,11 @@
 #include <omp.h>
 #include <stdio.h>
 
+// applying fibonacci with only one thread
 int sequential_fib(long long int n) {
     printf("Last thread: %d\n", omp_get_thread_num());
     long long i, j;
+
     if (n < 2)
         return n;
     else {
@@ -13,8 +15,10 @@ int sequential_fib(long long int n) {
     }
 }
 
+// applying fibonacci with numerous threads
 long long parallel_fib(long long n, int num_threads) {
 
+    // switch back to sequential fibonacci if there is only one thread
     if (num_threads == 1) {
         return sequential_fib(n);
     }
