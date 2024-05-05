@@ -46,6 +46,6 @@ long long parallel_fib(long long n, int num_threads) {
 int main() {
     int n = 10;
     int num_threads = 8;
-    printf("fib(%d) = %d", n, parallel_fib(n, num_threads));
+    printf("fib(%d) = %d\n", n, parallel_fib(n, num_threads));
     return 0;
 }
