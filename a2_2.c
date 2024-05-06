@@ -3,7 +3,6 @@
 
 // applying fibonacci with only one thread
 int sequential_fib(long long int n) {
-    printf("Last thread: %d\n", omp_get_thread_num());
     long long i, j;
 
     if (n < 2)
@@ -23,33 +22,53 @@ long long parallel_fib(long long n, int num_threads) {
         return sequential_fib(n);
     }
 
-    int threads_left;
-    if ((num_threads % 2) == 1)
-        threads_left = num_threads / 2 + 1;
-    else
-        threads_left = num_threads / 2;
+    // we are going to divide the total number of threads into two different parts
+    int threadsFori, threadsForj;
 
+    // case for odd number of threads
+    if ((num_threads % 2) == 1) {
 
-    printf("Num threads left: %d\n", threads_left);
+        // currently, i gets one more thread for its calculations
+        threadsFori = num_threads / 2 + 1;
+        threadsForj = num_threads/ 2;
+
+    // case for even number of threads – equally distributed
+    } else {
+        threadsFori = num_threads / 2;
+        threadsForj = num_threads / 2;
+    }
 
     long long i, j;
+
+    // we attempted to measure the execution time with these
+    double start;
+    double end;
+    double exct;
+    start = omp_get_wtime();
+
+    // the formula for parallel fibonacci
     if (n < 2)
         return n;
     else {
-#pragma omp parallel sections num_threads(threads_left)
+#pragma omp parallel sections num_threads(num_threads)
         {
 #pragma omp section
-            i = parallel_fib(n - 1, threads_left);
+            i = parallel_fib(n - 1, threadsFori);
 #pragma omp section
-            j = parallel_fib(n - 2, threads_left);
+            j = parallel_fib(n - 2, threadsForj);
         }
+
+        // this would get us the execution time
+        end = omp_get_wtime();
+        exct = end - start;
+       // printf("Time taken is %f\n for Thread %d\n", exct, omp_get_thread_num() );
+
     }
     return i + j;
 }
 
-int main() {
+void main() {
     int n = 10;
     int num_threads = 8;
     printf("fib(%d) = %d\n", n, parallel_fib(n, num_threads));
-    return 0;
 }
