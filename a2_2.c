@@ -3,6 +3,8 @@
 
 // applying fibonacci with only one thread
 int sequential_fib(long long int n) {
+    // printf("This is Thread Number %d working with the parameter %d\n", omp_get_thread_num(), n);
+
     long long i, j;
 
     if (n < 2)
