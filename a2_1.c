@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <time.h>
 
-int a2_2() {
+int a2_1() {
 
     // defining the array size
     const int arraySize = 1000000;
@@ -26,7 +26,9 @@ int a2_2() {
     return 0;
 }
 
+/*
 int main() {
-   a2_2();
-   return 0;
+    a2_1();
+    return 0;
 }
+*/

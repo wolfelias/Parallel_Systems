@@ -3,8 +3,7 @@
 
 // applying fibonacci with only one thread
 int sequential_fib(long long int n) {
-    // printf("This is Thread Number %d working with the parameter %d\n", omp_get_thread_num(), n);
-
+    printf("Thread number: %d - Parameter: %d \n", omp_get_thread_num(), n);
     long long i, j;
 
     if (n < 2)
@@ -18,35 +17,27 @@ int sequential_fib(long long int n) {
 
 // applying fibonacci with numerous threads
 long long parallel_fib(long long n, int num_threads) {
-
     // switch back to sequential fibonacci if there is only one thread
     if (num_threads == 1) {
         return sequential_fib(n);
     }
 
-    // we are going to divide the total number of threads into two different parts
+    // divide the total number of threads into two different parts
     int threadsFori, threadsForj;
 
     // case for odd number of threads
     if ((num_threads % 2) == 1) {
-
         // currently, i gets one more thread for its calculations
         threadsFori = num_threads / 2 + 1;
-        threadsForj = num_threads/ 2;
-
+        threadsForj = num_threads / 2;
+    }
     // case for even number of threads – equally distributed
-    } else {
+    else {
         threadsFori = num_threads / 2;
         threadsForj = num_threads / 2;
     }
 
     long long i, j;
-
-    // we attempted to measure the execution time with these
-    double start;
-    double end;
-    double exct;
-    start = omp_get_wtime();
 
     // the formula for parallel fibonacci
     if (n < 2)
@@ -59,18 +50,13 @@ long long parallel_fib(long long n, int num_threads) {
 #pragma omp section
             j = parallel_fib(n - 2, threadsForj);
         }
-
-        // this would get us the execution time
-        end = omp_get_wtime();
-        exct = end - start;
-       // printf("Time taken is %f\n for Thread %d\n", exct, omp_get_thread_num() );
-
     }
     return i + j;
 }
 
 void main() {
+    omp_set_nested(1);
     int n = 10;
-    int num_threads = 8;
-    printf("fib(%d) = %d\n", n, parallel_fib(n, num_threads));
+    int num_threads = 20;
+    printf("fib(%d) = %lli\n", n, parallel_fib(n, num_threads));
 }
