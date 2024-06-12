@@ -36,12 +36,6 @@ data cache_test(int array_size, int stride) {
     double accesses_per_array = (array_size / stride);
     double time_per_access = time_per_array_iteration / accesses_per_array;
 
-    // Print
-    // printf("Stride: %d\n", stride);
-    // printf("Time per array iteration: %f\n", time_per_array_iteration);
-    // printf("Time per single access: %f\n\n", time_per_access);
-
-
     data dataStruct;
     dataStruct.stride = stride;
     dataStruct.time_per_access = time_per_access;
