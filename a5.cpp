@@ -64,9 +64,11 @@ int writeToFile(const std::list<data> *d) {
 }
 
 void setCPUAffinity(int cpu) {
-    thread_affinity_policy_data_t policy = { cpu };
+    thread_affinity_policy_data_t policy = {cpu};
 
-    if (const thread_port_t mach_thread = pthread_mach_thread_np(pthread_self()); thread_policy_set(mach_thread, THREAD_AFFINITY_POLICY, reinterpret_cast<thread_policy_t>(&policy), THREAD_AFFINITY_POLICY_COUNT) != KERN_SUCCESS) {
+    if (const thread_port_t mach_thread = pthread_mach_thread_np(pthread_self()); thread_policy_set(mach_thread,
+        THREAD_AFFINITY_POLICY, reinterpret_cast<thread_policy_t>(&policy),
+        THREAD_AFFINITY_POLICY_COUNT) != KERN_SUCCESS) {
         std::cerr << "Error: Could not set cpu affinity" << std::endl;
     }
 }
@@ -76,20 +78,20 @@ int main() {
     setCPUAffinity(0);
 
     std::vector<size_t> array_sizes = {
-        1 << 12,       // 4 KB = 4 * 1024
-        1 << 13,       // 8 KB = 8 * 1024
-        1 << 14,       // 16 KB = 16 * 1024
-        1 << 15,       // 32 KB = 32 * 1024
-        1 << 16,       // 64 KB = 64 * 1024
-        1 << 17,       // 128 KB = 128 * 1024
-        1 << 18,       // 256 KB = 256 * 1024
-        1 << 19,       // 512 KB = 512 * 1024
-        1 << 20,       // 1 MB = 1024 * 1024
-        1 << 21,       // 2 MB = 2 * 1024 * 1024
-        1 << 22,       // 4 MB = 4 * 1024 * 1024
-        1 << 23,       // 8 MB = 8 * 1024 * 1024
-        1 << 24,       // 16 MB = 16 * 1024 * 1024
-        1 << 25        // 32 MB = 32 * 1024 * 1024
+        1 << 12, // 4 KB = 4 * 1024
+        1 << 13, // 8 KB = 8 * 1024
+        1 << 14, // 16 KB = 16 * 1024
+        1 << 15, // 32 KB = 32 * 1024
+        1 << 16, // 64 KB = 64 * 1024
+        1 << 17, // 128 KB = 128 * 1024
+        1 << 18, // 256 KB = 256 * 1024
+        1 << 19, // 512 KB = 512 * 1024
+        1 << 20, // 1 MB = 1024 * 1024
+        1 << 21, // 2 MB = 2 * 1024 * 1024
+        1 << 22, // 4 MB = 4 * 1024 * 1024
+        1 << 23, // 8 MB = 8 * 1024 * 1024
+        1 << 24, // 16 MB = 16 * 1024 * 1024
+        1 << 25 // 32 MB = 32 * 1024 * 1024
     };
 
     int strides[] = {1, 2, 4, 8, 16, 32, 64, 128, 256};
