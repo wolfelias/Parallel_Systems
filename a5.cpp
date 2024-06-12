@@ -1,7 +1,11 @@
 #include <fstream>
 #include <iostream>
 #include <vector>
-#include<list>
+#include <list>
+#include <pthread.h>
+#include <mach/mach.h>
+#include <mach/thread_policy.h>
+
 
 // Struct used for storing data
 struct data {
@@ -14,13 +18,13 @@ data cache_test(int array_size, int stride) {
     int iterations = 10000;
     // Set values of array to 2
     int *array = static_cast<int *>(malloc(array_size * sizeof(int)));
-
+    auto temp = 0;
     // Start clock
     timespec start{}, end{};
     clock_gettime(CLOCK_REALTIME, &start);
 
-    for (int times = 0; times <= iterations; ++times) {
-        for (int i = 0; i < array_size; i += stride) {
+    for (volatile int times = 0; times <= iterations; ++times) {
+        for (volatile int i = 0; i < array_size; i += stride) {
             volatile char value = array[i];
         }
     }
@@ -49,24 +53,34 @@ data cache_test(int array_size, int stride) {
 }
 
 int writeToFile(const std::list<data> *d) {
-    char filename[] = "data.txt";
+    char filename[] = "data.csv";
     std::ofstream file(filename);
 
     if (!file) {
         std::cerr << "Could not open file: " << filename << std::endl;
         return -1;
     }
+    file << "Stride" << "," << " Arraysize" << "," << " Time per Access" << "\n";
 
-    file << "[ \n";
     for (data i: *d) {
-        file << "[" << i.stride << "," << i.arraySize << "," << i.time_per_access << "],\n";
+        file << i.stride << "," << i.arraySize << "," << i.time_per_access << "\n";
     }
-    file << "]\n";
     file.close();
     return 0;
 }
 
+void setCPUAffinity(int cpu) {
+    thread_affinity_policy_data_t policy = { cpu };
+
+    if (const thread_port_t mach_thread = pthread_mach_thread_np(pthread_self()); thread_policy_set(mach_thread, THREAD_AFFINITY_POLICY, reinterpret_cast<thread_policy_t>(&policy), THREAD_AFFINITY_POLICY_COUNT) != KERN_SUCCESS) {
+        std::cerr << "Error: Could not set cpu affinity" << std::endl;
+    }
+}
+
 int main() {
+    // Set cpu affinity to 1 core
+    setCPUAffinity(0);
+
     int array_size = 10000;
     std::vector<size_t> array_sizes = {
         1 << 10 /*4 KB*/, 1 << 12 /*16 KB*/, 1 << 14 /*64 KB*/, 1 << 16 /*256 KB*/, 4194304 /*16MB*/,
