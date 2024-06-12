@@ -1,3 +1,4 @@
+#[[
 cmake_minimum_required(VERSION 3.6)
 project(UE02)
 
@@ -10,4 +11,12 @@ if (OPENMP_FOUND)
 endif()
 set(SOURCE_FILES a2_1.c
         a2_2.c)
-add_executable(UE02 ${SOURCE_FILES})
+add_executable(UE02 ${SOURCE_FILES})]]
+
+cmake_minimum_required(VERSION 3.28)
+project(a5)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(a5 a5.cpp
+)

@@ -151,10 +151,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "CXX compiler"
 				}
 			],
-			"type" : "UNINITIALIZED",
+			"type" : "STRING",
 			"value" : "/usr/local/Cellar/gcc/13.2.0/bin/g++-13"
 		},
 		{
@@ -279,10 +279,10 @@
 				},
 				{
 					"name" : "HELPSTRING",
-					"value" : "No help, variable specified on the command line."
+					"value" : "C compiler"
 				}
 			],
-			"type" : "UNINITIALIZED",
+			"type" : "STRING",
 			"value" : "/usr/local/Cellar/gcc/13.2.0/bin/gcc-13"
 		},
 		{
@@ -883,7 +883,7 @@
 				}
 			],
 			"type" : "STATIC",
-			"value" : "UE02"
+			"value" : "a5"
 		},
 		{
 			"name" : "CMAKE_RANLIB",
@@ -1182,195 +1182,7 @@
 			"value" : "FALSE"
 		},
 		{
-			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_OpenMP",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Details about finding OpenMP"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "[TRUE][TRUE][c ][v4.5()]"
-		},
-		{
-			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_C",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Details about finding OpenMP_C"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "[-fopenmp][/usr/local/Cellar/gcc/13.2.0/lib/gcc/current/libgomp.dylib][v4.5()]"
-		},
-		{
-			"name" : "FIND_PACKAGE_MESSAGE_DETAILS_OpenMP_CXX",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Details about finding OpenMP_CXX"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "[-fopenmp][/usr/local/Cellar/gcc/13.2.0/lib/gcc/current/libgomp.dylib][v4.5()]"
-		},
-		{
-			"name" : "OpenMP_COMPILE_RESULT_CXX_fopenmp",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Result of TRY_COMPILE"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "TRUE"
-		},
-		{
-			"name" : "OpenMP_COMPILE_RESULT_C_fopenmp",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Result of TRY_COMPILE"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "TRUE"
-		},
-		{
-			"name" : "OpenMP_CXX_FLAGS",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "CXX compiler flags for OpenMP parallelization"
-				}
-			],
-			"type" : "STRING",
-			"value" : "-fopenmp"
-		},
-		{
-			"name" : "OpenMP_CXX_LIB_NAMES",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "CXX compiler libraries for OpenMP parallelization"
-				}
-			],
-			"type" : "STRING",
-			"value" : "gomp"
-		},
-		{
-			"name" : "OpenMP_CXX_SPEC_DATE",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "CXX compiler's OpenMP specification date"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "201511"
-		},
-		{
-			"name" : "OpenMP_C_FLAGS",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "C compiler flags for OpenMP parallelization"
-				}
-			],
-			"type" : "STRING",
-			"value" : "-fopenmp"
-		},
-		{
-			"name" : "OpenMP_C_LIB_NAMES",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "C compiler libraries for OpenMP parallelization"
-				}
-			],
-			"type" : "STRING",
-			"value" : "gomp"
-		},
-		{
-			"name" : "OpenMP_C_SPEC_DATE",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "C compiler's OpenMP specification date"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "201511"
-		},
-		{
-			"name" : "OpenMP_SPECTEST_CXX_",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Result of TRY_COMPILE"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "TRUE"
-		},
-		{
-			"name" : "OpenMP_SPECTEST_C_",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Result of TRY_COMPILE"
-				}
-			],
-			"type" : "INTERNAL",
-			"value" : "TRUE"
-		},
-		{
-			"name" : "OpenMP_gomp_LIBRARY",
-			"properties" : 
-			[
-				{
-					"name" : "ADVANCED",
-					"value" : "1"
-				},
-				{
-					"name" : "HELPSTRING",
-					"value" : "Path to the gomp library for OpenMP"
-				}
-			],
-			"type" : "FILEPATH",
-			"value" : "/usr/local/Cellar/gcc/13.2.0/lib/gcc/current/libgomp.dylib"
-		},
-		{
-			"name" : "UE02_BINARY_DIR",
+			"name" : "a5_BINARY_DIR",
 			"properties" : 
 			[
 				{
@@ -1382,7 +1194,7 @@
 			"value" : "/Users/elias/CLionProjects/UE02/cmake-build-debug"
 		},
 		{
-			"name" : "UE02_IS_TOP_LEVEL",
+			"name" : "a5_IS_TOP_LEVEL",
 			"properties" : 
 			[
 				{
@@ -1394,79 +1206,7 @@
 			"value" : "ON"
 		},
 		{
-			"name" : "UE02_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/Users/elias/CLionProjects/UE02"
-		},
-		{
-			"name" : "openmp_test_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/Users/elias/CLionProjects/UE02/cmake-build-debug"
-		},
-		{
-			"name" : "openmp_test_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "openmp_test_SOURCE_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/Users/elias/CLionProjects/UE02"
-		},
-		{
-			"name" : "openmp_test_clion_BINARY_DIR",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "/Users/elias/CLionProjects/UE02/cmake-build-debug"
-		},
-		{
-			"name" : "openmp_test_clion_IS_TOP_LEVEL",
-			"properties" : 
-			[
-				{
-					"name" : "HELPSTRING",
-					"value" : "Value Computed by CMake"
-				}
-			],
-			"type" : "STATIC",
-			"value" : "ON"
-		},
-		{
-			"name" : "openmp_test_clion_SOURCE_DIR",
+			"name" : "a5_SOURCE_DIR",
 			"properties" : 
 			[
 				{
