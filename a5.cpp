@@ -54,7 +54,7 @@ int writeToFile(const std::list<data> *d) {
         std::cerr << "Could not open file: " << filename << std::endl;
         return -1;
     }
-    file << "Stride" << "," << " Arraysize" << "," << " Time per Access" << "\n";
+    file << "Stride" << "," << "Arraysize" << "," << "Time per Access" << "\n";
 
     for (data i: *d) {
         file << i.stride << "," << i.arraySize << "," << i.time_per_access << "\n";
